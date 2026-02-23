@@ -1,6 +1,6 @@
 import json
 
-with open("sample-data.json", "r") as file:
+with open("Practice4\json\sample-data.json", "r") as file:
     data = json.load(file)
     print("Interface Status")
     print("================================================================================")
