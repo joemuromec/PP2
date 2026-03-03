@@ -1,7 +1,7 @@
 import re
 
 def Task1(text):
-    pattern = r"ab*^$"
+    pattern = r"^ab*$"
     if re.search(pattern, text):
         return "Match is found"
     else:
@@ -32,7 +32,7 @@ def Task5(text):
     if re.fullmatch(pattern, text):
         return f"{text} matches pattern"
     else:
-        return f"{text} does NOT matches pattern"
+        return f"{text} does NOT matches pattern\n"
 
 def Task6(text):
     pattern = r"[ ,.]"
@@ -63,8 +63,8 @@ print("Task 1")
 print(f"ab: {Task1('ab')}")    
 print(f"abbb: {Task1('abbb')}\n")
 print("Task 2")
-print(f"abbb: {Task2("abbb")}")  # В самый раз
-print(f"abbbb: {Task2("abbbb")}\n") # Слишком много
+print(f"abbb: {Task2("abbb")}")  
+print(f"abbbb: {Task2("abbbb")}\n") 
 test_str = "snake_case example"
 print("Task 3")
 print(f"{Task3(test_str)}\n")
@@ -73,11 +73,11 @@ test_text = "Yesterday Ivan bought an Apple and went to London. It was great!"
 print(f"Words that were found: {Task4(test_text)}\n")
 print("Task 5")
 print(Task5("ab"))
-print(Task5(f"amazing_python_job\n"))
+print(Task5(f"amazing_python_job"))
 print("Task 6")
 test_str = "Python Exercises, Java.C++"
-print(f"До:    {test_str}")
-print(f"После: {Task6(test_str)}\n")
+print(f"Before: {test_str}")
+print(f"After: {Task6(test_str)}\n")
 print("Task 7")
 test_str = "python_exercises_solution"
 print(f"Snake: {test_str}")
