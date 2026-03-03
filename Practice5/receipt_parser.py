@@ -7,8 +7,8 @@ def parse_receipt(text):
     date_time = dt_match.group(1) if dt_match else "Не найдено"
     
     # Payment method
-    payment_match = re.search(r"Банковская карта:\s*([\d\s,]+)", text)
-    payment_method = "Банковская карта" if payment_match else "Наличные"
+    payment_match = re.search(".+(?=\\n(\\d+?\\s?\\d+\\,\\d+)\\nИТОГО)", text)
+    payment_method = payment_match.group()[:-1] if payment_match else "Не найдено"
 
     # Product names and prices
     items = []
