@@ -1,5 +1,6 @@
 import re
 import json
+from pathlib import Path
 
 def parse_receipt(text):
     # Date and time
@@ -33,7 +34,7 @@ def parse_receipt(text):
     }
 
 
-with open("raw.txt", "r", encoding="utf-8") as file:
+with open(Path(__file__).parent / "raw.txt", "r", encoding="utf-8") as file:
     receipt_text = file.read()
     
 result = parse_receipt(receipt_text)
