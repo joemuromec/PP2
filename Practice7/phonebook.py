@@ -82,7 +82,7 @@ def delete_contact():
     print(f"Operation passed successfully")
 
 while True: 
-    print("""Choose option
+    print("""Phonebook management
     1. Create table
     2. Insert data from a CSV file
     3. Insert data from console
