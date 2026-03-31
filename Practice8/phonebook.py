@@ -5,9 +5,9 @@ def init_db():
     conn = get_connection()
     cur = conn.cursor()
     try:
-        with open("PP2/Practice8/functions.sql") as f:
+        with open("Practice8/functions.sql") as f:
             cur.execute(f.read())
-        with open("PP2/Practice8/procedures.sql") as f:
+        with open("Practice8/procedures.sql") as f:
             cur.execute(f.read())
         conn.commit()
         print("The database was successfully initialized (functions and procedures were updated).")
