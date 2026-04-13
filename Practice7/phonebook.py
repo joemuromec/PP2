@@ -19,7 +19,7 @@ def insert_from_csv(file_path):
                     data = line.split(",")
                     cur.execute(
                         "INSERT INTO contacts (user_name, phone_number) VALUES (%s, %s) ON CONFLICT (user_name) DO NOTHING",
-                        (data[0], data[1])
+                        (data[0].strip(), data[1].strip())
                     )
     print("Data was loaded successfully")
 
@@ -82,19 +82,19 @@ def delete_contact():
     print(f"Operation passed successfully")
 
 while True: 
-    print("""Phonebook management
+    print("""--- PHONEBOOK MANAGEMENT ---
     1. Create table
     2. Insert data from a CSV file
     3. Insert data from console
     4. Update contact's name or number
     5. Filters contacts
     6. Delete a contact
-    7. Exit""")
+    0. Exit""")
     option = input("Choose option: ")
     if option == "1":
         create_table()
     elif option == "2":
-        insert_from_csv("PP2\Practice7\contacts.csv")
+        insert_from_csv("Practice7\contacts.csv")
     elif option == "3":
         insert_from_console()
     elif option == "4":
@@ -106,7 +106,7 @@ while True:
         query_contacts(name_filter, phone_prefix)
     elif option == "6":
         delete_contact()
-    elif option == "7":
+    elif option == "0":
         break
     else:
         print("Wrong input!")

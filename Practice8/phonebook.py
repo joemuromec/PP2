@@ -5,9 +5,9 @@ def init_db():
     conn = get_connection()
     cur = conn.cursor()
     try:
-        with open("PP2/Practice8/functions.sql") as f:
+        with open("Practice8/functions.sql") as f:
             cur.execute(f.read())
-        with open("PP2/Practice8/procedures.sql") as f:
+        with open("Practice8/procedures.sql") as f:
             cur.execute(f.read())
         conn.commit()
         print("The database was successfully initialized (functions and procedures were updated).")
@@ -56,11 +56,13 @@ def mass_import(names, phones):
     cur = conn.cursor()
     try:
         cur.execute("CALL mass_insert_contacts(%s, %s, NULL)", (names, phones))
-        incorrect = cur.fetchone()
-        print(f"Incorrect data: {incorrect}")
+        incorrect: tuple[list[str]] = cur.fetchone()
+        if incorrect[0]:
+            print(f"Incorrect data: ", end="")
+            print(*incorrect[0], sep=", ")
         conn.commit()
     except Exception as e:
-        print(f"Bulk importin error: {e}")
+        print(f"Bulk importing error: {e}")
         conn.rollback()
     finally:
         cur.close()
