@@ -20,7 +20,7 @@ font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
 
 # Background image
-background = pygame.image.load(r"PP2\Practice10-11\Racer\AnimatedStreet.png")
+background = pygame.image.load(r"Practice10-11\Racer\AnimatedStreet.png")
 
 #Screen info
 SCREEN_WIDTH = 400
@@ -33,7 +33,7 @@ pygame.display.set_caption("TURBO")
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load(r"PP2\Practice10-11\Racer\Enemy.png")
+        self.image = pygame.image.load(r"Practice10-11\Racer\Enemy.png")
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
 
@@ -49,7 +49,7 @@ class Enemy(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load(r"PP2\Practice10-11\Racer\Player.png")
+        self.image = pygame.image.load(r"Practice10-11\Racer\Player.png")
         self.rect = self.image.get_rect()
         self.rect.center = (160, 520)
     
@@ -66,7 +66,7 @@ class Player(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load(r"PP2\Practice10-11\Racer\coin.png")
+        self.image = pygame.image.load(r"Practice10-11\Racer\coin.png")
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
@@ -142,7 +142,7 @@ while running:
 
     # Collisions
     if pygame.sprite.spritecollideany(P1, enemies):
-        pygame.mixer.Sound(r"PP2\Practice10-11\Racer\crash.wav").play()
+        pygame.mixer.Sound(r"Practice10-11\Racer\crash.wav").play()
         time.sleep(0.5)
 
         screen.fill(RED)
