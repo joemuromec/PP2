@@ -114,7 +114,7 @@ class SnakeGame:
 
         # Проверка столкновений
         if not (0 <= new_head.x < CELL_WIDTH and 0 <= new_head.y < CELL_HEIGHT) or new_head in self.snake:
-            self.reset_game()
+            self.game_over_logic()
             return
 
         self.snake.insert(0, new_head)
@@ -131,6 +131,14 @@ class SnakeGame:
             self.spawn_food()
         else:
             self.snake.pop()
+        
+    def game_over_logic(self):
+        font_big = pygame.font.SysFont("Arial", 80, bold=True)
+        text = font_big.render("CRASHED!", True, WHITE)
+        self.screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - 40))
+        pygame.display.update()
+        pygame.time.delay(2000)
+        self.reset_game()
 
     def run(self):
         """Главный цикл управления"""
