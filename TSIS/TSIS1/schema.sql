@@ -1,7 +1,4 @@
--- ============================================================
--- schema.sql  –  Phonebook Database Schema (Practice 9 / TSIS1)
--- ============================================================
-
+-- Active: 1774970360465@@127.0.0.1@5432@phonebook
 -- Groups / categories
 CREATE TABLE IF NOT EXISTS groups (
     id   SERIAL PRIMARY KEY,
@@ -16,7 +13,7 @@ INSERT INTO groups (name) VALUES
     ('Other')
 ON CONFLICT (name) DO NOTHING;
 
--- Contacts (base table – assumed to exist from Practice 7/8)
+-- Contacts
 CREATE TABLE IF NOT EXISTS contacts (
     id         SERIAL PRIMARY KEY,
     name       VARCHAR(100) NOT NULL,

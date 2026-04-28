@@ -1,11 +1,5 @@
--- ============================================================
--- procedures.sql  –  PL/pgSQL Stored Procedures & Functions
--- ============================================================
-
--- ------------------------------------------------------------
 -- 1. add_phone(contact_name, phone, type)
 --    Adds a phone number to an existing contact.
--- ------------------------------------------------------------
 CREATE OR REPLACE PROCEDURE add_phone(
     p_contact_name VARCHAR,
     p_phone        VARCHAR,
@@ -37,10 +31,8 @@ END;
 $$;
 
 
--- ------------------------------------------------------------
 -- 2. move_to_group(contact_name, group_name)
 --    Moves a contact to a group; creates the group if needed.
--- ------------------------------------------------------------
 CREATE OR REPLACE PROCEDURE move_to_group(
     p_contact_name VARCHAR,
     p_group_name   VARCHAR
@@ -82,10 +74,8 @@ END;
 $$;
 
 
--- ------------------------------------------------------------
 -- 3. search_contacts(query)  →  TABLE
 --    Full search: name, email, and all phone numbers.
--- ------------------------------------------------------------
 CREATE OR REPLACE FUNCTION search_contacts(p_query TEXT)
 RETURNS TABLE (
     contact_id  INTEGER,
@@ -121,10 +111,8 @@ END;
 $$;
 
 
--- ------------------------------------------------------------
--- 4. Pagination helper (compatible with Practice 8 pattern)
+-- 4. Pagination helper
 --    get_contacts_page(page_num, page_size, sort_by, group_id_filter)
--- ------------------------------------------------------------
 CREATE OR REPLACE FUNCTION get_contacts_page(
     p_page        INTEGER DEFAULT 1,
     p_size        INTEGER DEFAULT 10,

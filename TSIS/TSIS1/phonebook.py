@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-"""
-phonebook.py – Extended Phonebook Console Application
-Covers Tasks 3.1 – 3.4:
-  • Extended contact model (phones, email, birthday, group)
-  • Advanced search / filter / sort / pagination
-  • Import / export (JSON + extended CSV)
-  • New stored procedures (add_phone, move_to_group, search_contacts)
-"""
-
 import csv
 import json
 import os
@@ -16,10 +6,8 @@ from datetime import date, datetime
 
 from connect import get_connection, get_cursor
 
-# ─────────────────────────────────────────────────────────────
-# Helpers
-# ─────────────────────────────────────────────────────────────
 
+# Helpers
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
@@ -48,9 +36,7 @@ def fmt_contact(row) -> str:
     )
 
 
-# ─────────────────────────────────────────────────────────────
 # 3.1  CRUD helpers
-# ─────────────────────────────────────────────────────────────
 
 def add_contact():
     header("Add Contact")
@@ -121,12 +107,9 @@ def delete_contact():
     pause()
 
 
-# ─────────────────────────────────────────────────────────────
 # 3.2  Advanced Search / Filter / Sort / Pagination
-# ─────────────────────────────────────────────────────────────
 
 PAGE_SIZE = 5
-
 
 def search_menu():
     """Interactive search / filter / sort / pagination loop."""
@@ -209,13 +192,10 @@ def search_menu():
             break
 
 
-# ─────────────────────────────────────────────────────────────
 # 3.3  Import / Export
-# ─────────────────────────────────────────────────────────────
-
 def export_json():
     header("Export to JSON")
-    filename = input("Output filename [contacts_export.json]: ").strip() or "contacts_export.json"
+    filename = os.path.join(os.path.dirname(__file__), input("Output filename [contacts_export.json]: ").strip() or "contacts_export.json")
 
     conn = get_connection()
     contacts = []
@@ -318,7 +298,7 @@ def _upsert_contact_from_dict(cur, record: dict, overwrite: bool) -> str:
 
 def import_json():
     header("Import from JSON")
-    filename = input("JSON filename [contacts_export.json]: ").strip() or "contacts_export.json"
+    filename = os.path.join(os.path.dirname(__file__), input("JSON filename [contacts_export.json]: ").strip() or "contacts_export.json")
     if not os.path.exists(filename):
         print(f"File '{filename}' not found."); pause(); return
 
@@ -353,7 +333,7 @@ def import_json():
 def import_csv():
     """Extended CSV importer – handles email, birthday, group, phone, phone_type."""
     header("Import from CSV")
-    filename = input("CSV filename [contacts.csv]: ").strip() or "contacts.csv"
+    filename = os.path.join(os.path.dirname(__file__), input("CSV filename [contacts.csv]: ").strip() or "contacts.csv")
     if not os.path.exists(filename):
         print(f"File '{filename}' not found."); pause(); return
 
@@ -404,10 +384,7 @@ def import_csv():
     pause()
 
 
-# ─────────────────────────────────────────────────────────────
 # 3.4  Stored-procedure wrappers
-# ─────────────────────────────────────────────────────────────
-
 def call_add_phone():
     header("Add Phone to Contact")
     name  = input("Contact name : ").strip()
@@ -459,10 +436,7 @@ def call_search_contacts():
     pause()
 
 
-# ─────────────────────────────────────────────────────────────
 # Main menu
-# ─────────────────────────────────────────────────────────────
-
 MENU = """
   ── Contacts ──────────────────────────
   1. Add contact

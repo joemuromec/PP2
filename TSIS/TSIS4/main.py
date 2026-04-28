@@ -1,7 +1,4 @@
 # main.py — entry point; all Pygame screens + main game loop
-# Screens implemented:
-#   3.6  Main Menu, Game Over, Leaderboard, Settings
-#   3.1  Username entry, DB leaderboard fetch/save
 
 import pygame
 import sys
