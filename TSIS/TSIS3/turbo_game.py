@@ -38,8 +38,8 @@ DIFFICULTIES = {
     "Hard":   {"base_speed": 7,   "inc": 0.30, "enemy_count": 3, "obs_count": 3},
 }
 
-SETTINGS_FILE    = "settings.json"
-LEADERBOARD_FILE = "leaderboard.json"
+SETTINGS_FILE    = os.path.join(os.path.dirname(__file__), "settings.json")
+LEADERBOARD_FILE = os.path.join(os.path.dirname(__file__), "leaderboard.json")
 
 # ── Persistence helpers ───────────────────────────────────────────────────────
 def load_settings():
@@ -107,14 +107,6 @@ def make_enemy_surface():
         pygame.draw.rect(surf, wheel_col, (wx, wy, 6, 10), border_radius=2)
     return surf
 
-def load_or_make(path, fallback_fn, *args):
-    """Try to load image; fall back to a drawn surface."""
-    if os.path.exists(path):
-        try:
-            return pygame.image.load(path).convert_alpha()
-        except Exception:
-            pass
-    return fallback_fn(*args)
 
 def make_coin_surface(size=25):
     surf = pygame.Surface((size, size), pygame.SRCALPHA)

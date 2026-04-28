@@ -1,0 +1,8 @@
+name,email,birthday,group,phone,phone_type
+Alice Johnson,alice@gmail.com,1990-05-14,Friend,+1-555-0101,mobile
+Alice Johnson,alice@gmail.com,1990-05-14,Friend,+1-555-0102,home
+Bob Smith,bob@work.com,1985-11-02,Work,+1-555-0201,work
+Carol White,carol@gmail.com,1993-03-22,Family,+1-555-0301,mobile
+David Brown,david@yahoo.com,,Other,+1-555-0401,home
+Eve Davis,eve@work.com,1988-07-30,Work,+1-555-0501,work
+Frank Miller,frank@gmail.com,2000-01-15,Friend,+1-555-0601,mobile
